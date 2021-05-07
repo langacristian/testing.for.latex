@@ -112,43 +112,8 @@ void merge_sort(int *array,int l,int r)
         merge(array,l,m,r);
     }
 }
-void heapify(int *array, int n, int i)
-{
-    int largest = i;
-    int l = 2 * i + 1;
-    int r = 2 * i + 2;
 
 
-    if (l < n && array[l] > array[largest])
-        largest = l;
-
-
-    if (r < n && array[r] > array[largest])
-        largest = r;
-
-
-    if (largest != i) {
-        swap(array[i], array[largest]);
-
-
-        heapify(array, n, largest);
-    }
-}
-void heap_sort(int *array, int n)
-{
-
-    for (int i = n / 2 - 1; i >= 0; i--)
-        heapify(array, n, i);
-
-
-    for (int i = n - 1; i > 0; i--) {
-
-        swap(array[0], array[i]);
-
-
-        heapify(array, i, 0);
-    }
-}
 int partition(int *array,int low,int high)
 {
     int pivot=array[high];
@@ -277,24 +242,7 @@ int main()
    cout<<"Running time for merge sort descending array: "<<fixed<<double(end11-start11)/double(CLOCKS_PER_SEC)<<setprecision(12)<<endl;
    break;
    }
-   case 12:{clock_t start12=clock();
-   heap_sort(rand_arr,l);
-   clock_t end12=clock();
-   cout<<"Running time for heap sort random array: "<<fixed<<double(end12-start12)/double(CLOCKS_PER_SEC)<<setprecision(12)<<endl;
-   break;
-   }
-   case 13:{clock_t start13=clock();
-   heap_sort(asc_arr,l);
-   clock_t end13=clock();
-   cout<<"Running time for heap sort ascending array: "<<fixed<<double(end13-start13)/double(CLOCKS_PER_SEC)<<setprecision(12)<<endl;
-   break;
-   }
-   case 14:{clock_t start14=clock();
-   heap_sort(desc_arr,l);
-   clock_t end14=clock();
-   cout<<"Running time for heap sort descending array: "<<fixed<<double(end14-start14)/double(CLOCKS_PER_SEC)<<setprecision(12)<<endl;
-   break;
-   }
+   
    case 15:{clock_t start15=clock();
    quick_sort(rand_arr,0,l-1);
    clock_t end15=clock();
